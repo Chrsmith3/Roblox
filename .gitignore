@@ -1,0 +1,10 @@
+# Place-Dateien gehören nicht ins Git (Map liegt in Team Create)
+*.rbxl
+*.rbxlx
+*.rbxm
+*.rbxmx
+*.rbxl.lock
+*.rbxlx.lock
+sourcemap.json
+roblox.yml
+.DS_Store
