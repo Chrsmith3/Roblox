@@ -5,8 +5,8 @@ Gilt für jede Session in diesem Repo. Das ist die einzige Stelle mit diesen Reg
 ## Session-Start (in dieser Reihenfolge, nichts sonst auf Verdacht lesen)
 1. `git fetch` und auf dem eigenen Branch `git pull --rebase` (neuer Branch: `git switch -c <kürzel>/<feature> origin/main`).
 2. `.team/OFFEN.md` lesen.
-3. Neue Einträge der anderen: `ls -t .team/chris .team/julius .team/gregor | head` — nur Dateien lesen, die neuer sind als dein letzter eigener Eintrag (max. 5).
-4. `git log --oneline origin/main -10` und `gh pr list` — zeigt auch Arbeit ohne Eintrag.
+3. Neue Einträge der anderen: `git log origin/main --oneline --name-only -8 -- .team/chris .team/julius .team/gregor` — nur die dort genannten Dateien lesen, die neuer sind als dein letzter eigener Eintrag (max. 5). (Nicht nach Datei-Zeit sortieren: nach `git pull` haben alle Dateien dieselbe Zeit.)
+4. `git log --oneline origin/main -10` und `gh pr list` (ohne `gh`: GitHub-Seite ⟩ Pull requests) — zeigt auch Arbeit ohne Eintrag.
 5. Vor dem ersten Edit: In `OFFEN.md` unter „In Arbeit" deine Zeile setzen (wer, Branch, welche Systeme/Dateien). Überschneidet sich das mit einer fremden Zeile: **stoppen und den Menschen fragen.**
 
 ## Während der Arbeit
