@@ -57,9 +57,9 @@ cd ~/Desktop/"Roblox "
 
 ## GitHub
 
-1. Privates Repo auf GitHub anlegen, diesen Ordner hochladen (z. B. mit GitHub Desktop).
-2. Die anderen klonen das Repo und machen die Einrichtung oben.
-3. Nach jedem funktionierenden Feature: Commit + Push. Vor dem Arbeiten: Pull.
+1. Repo klonen und die Einrichtung oben machen. Persönliche KI-Einstellungen: `.team/_claude-local-vorlage.md` nach `CLAUDE.local.md` kopieren und ausfüllen (wird nicht committet).
+2. Ein Branch pro Feature: `<kürzel>/<feature>` (`chris`, `julius`, `gregor`), nie direkt auf `main`.
+3. Merge nach `main` per Pull Request mit Approval einer anderen Person. Der komplette Ablauf für Mensch und KI steht in `.team/README.md`.
 
 ## Prüfen vor dem Commit
 

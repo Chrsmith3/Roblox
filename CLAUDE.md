@@ -57,8 +57,11 @@ packages/server/       -> ServerStorage.ServerPackages (ProfileStore)
 - **Jede Aktion braucht Feedback** über `FeedbackController`: Sound + Animation (Pop/Tween) + ggf. FloatingText, CameraShake, Haptic.
 - Belohnungs-Feedback erst zeigen, wenn der Server bestätigt hat (über `DataController.Observe`).
 
+## Teamarbeit (zuerst lesen)
+Drei Personen arbeiten gleichzeitig mit eigenen KIs. **Vor jeder Arbeit `.team/README.md` lesen und befolgen** (Session-Start, eigene Branches, eigener Team-Ordner, `OFFEN.md`, Session-Ende). Persönliche Einstellungen stehen in `CLAUDE.local.md` (nicht im Git).
+
 ## Arbeitsweise mit Claude
 - Ein Feature pro Session: erst Plan, dann Code (Server + Client + UI), dann Testanleitung.
-- Nach jedem funktionierenden Schritt: Git-Commit.
+- Nach jedem funktionierenden Schritt: Commit auf dem eigenen Branch (siehe `.team/README.md`).
 - Neue Remotes in `Net.luau` eintragen, neue Daten in `DataTemplate.luau`.
 - Vor Abgabe: `selene src` und `stylua src` ohne Fehler.
