@@ -8,3 +8,7 @@
 sourcemap.json
 roblox.yml
 .DS_Store
+
+# Persönliche KI-Einstellungen (jede Person hat ihre eigene, nie committen)
+CLAUDE.local.md
+.claude/settings.local.json

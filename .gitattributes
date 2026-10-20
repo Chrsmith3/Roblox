@@ -1,0 +1,4 @@
+# Gleiche Zeilenenden auf Mac und Windows
+* text=auto eol=lf
+*.rbxl binary
+*.rbxm binary
