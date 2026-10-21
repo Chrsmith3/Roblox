@@ -12,6 +12,7 @@
 ## Entscheidungen offen
 - GDD (`docs/GDD.md`) gemeinsam ausfüllen — alle
 - Roblox-Gruppe als Owner + Einnahmen-Split — alle
+- Rollen den Personen zuordnen (Tabelle in `docs/ARBEITSPLAN.md`) — alle
 - Publisher für Live bestimmen; Woche-0-Praxistest (Publish-as, Restore) zu dritt terminieren — alle
 
 ## Studio
