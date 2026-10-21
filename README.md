@@ -38,7 +38,7 @@ cd ~/Desktop/"Roblox "
 
 ## Täglich arbeiten
 
-1. Roblox Studio öffnen, euer Spiel (Team Create) öffnen.
+1. Roblox Studio öffnen, **dein eigenes Dev-Experience** öffnen (Name steht in deiner `CLAUDE.local.md`). Nicht das gemeinsame Team-Create-Spiel.
 2. Im Terminal in diesem Ordner:
    ```bash
    rojo serve
@@ -46,7 +46,7 @@ cd ~/Desktop/"Roblox "
 3. In Studio: Plugins-Tab → **Rojo** → **Connect**. Ab jetzt landet jede Code-Änderung sofort in Studio.
 4. Play drücken und testen.
 
-**Wichtig im Team:** Immer nur **eine Person** gleichzeitig mit Rojo verbinden, wenn ihr in derselben Team-Create-Session seid. Code-Stand teilt ihr über GitHub, die Map über Team Create.
+**Wichtig im Team:** Rojo verbindest du nur mit deinem eigenen Dev-Experience. Ins gemeinsame Staging (Team Create) synchronisiert nur, wer in `.team/OFFEN.md` unter „Studio“ die Zeile `Rojo-Sync: <kürzel>` hält. Code-Stand teilt ihr über GitHub, die Map über Team Create. Regeln: `.team/README.md`.
 
 ## Einmalig fürs Spiel (macht eine Person)
 
