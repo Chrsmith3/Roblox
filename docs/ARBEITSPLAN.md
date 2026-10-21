@@ -5,10 +5,10 @@
 
 ## Beschlossen (Team, 2026-10-20/21)
 
-- Spiel: Simulator mit Zeitaltern von der Steinzeit bis 3000 n. Chr. (open end), dazu PvP als fester Teil. Details: `docs/GDD.md`.
+- Spiel: Simulator mit Zeitaltern von der Steinzeit bis 3000 n. Chr. (open end), dazu PvP als fester Teil. Spielinhalt (Zeitalter, Arena, Core Loop, Ei-Regeln) steht verbindlich in `docs/GDD.md`; dieser Arbeitsplan regelt nur, **wer** was **wie** baut.
 - **PvP-Format A:** Arena-Kampf mit Fähigkeiten (Abklingzeit), Treffer entscheidet immer der Server. Ranked-Matchmaking kommt erst später, v1 ist die Arena im eigenen Server.
 - Core Loop: *Sammle Ressourcen deiner Ära, werde stärker und spring in die nächste Epoche. Miss dich in der Arena mit Spielern auf deiner Stufe und hol dir Belohnungen, die es nur dort gibt.*
-- Eier nur mit erspielbarer Währung (nie mit Robux kaufbar), Odds immer sichtbar, Pity-Zähler. PvP-Boni aus dem Simulator sind gedeckelt.
+- Eier: Odds immer sichtbar, Pity-Zähler. Regel zur Ei-Währung siehe Vertrag 9. PvP-Boni aus dem Simulator sind gedeckelt.
 - **Design von Anfang an:** Kein graues Graybox, alle Platzhalter nutzen sofort den Style Guide.
 - Gestaltung bevorzugt mit **Claude Design** (2D). 3D-Maps, Modelle und Animationen entstehen in Roblox Studio.
 - Stufen: Dev → Staging → Live als eigene Experiences. Ablauf: `docs/KI-BRIEFING-DEV-STAGING-LIVE.md`.
@@ -54,7 +54,9 @@ GDD pflegen, Ökonomie-Zahlen mit „Kern" abstimmen, `.team/OFFEN.md` im Blick,
 5. **Remotes:** Jede Rolle trägt neue Remotes in `Net.luau` in einem eigenen, kommentierten Abschnitt ein (weniger Merge-Konflikte).
 6. **Assets unter der Roblox-Gruppe hochladen,** der das Spiel gehört, sonst spielen Animationen im Spiel nicht ab. Bilder gehen durch die Moderation (Wartezeit einplanen).
 7. **Studio:** Code nur per Rojo im eigenen Dev-Experience. Karte/Modelle im gemeinsamen Staging (Team Create), Bereich vorher in `OFFEN.md` ansagen. Live wird nur vom Publisher aus Staging überschrieben.
-8. **Serverautoritativ:** Der Client schickt nur Absichten. Alle Regeln aus `CLAUDE.md` (Sicherheit, Daten, Monetarisierung) gelten für jede Rolle.
+8. **Produkt-IDs pro Stufe:** Game Passes und Developer Products gehören zu genau einem Experience. `Config/Products.luau` hält die IDs für Dev, Staging und Live und wählt sie automatisch nach `game.GameId`. Wer ein Produkt anlegt, legt es in allen drei Experiences an. (Umsetzung: Kern, sobald es Produkte gibt.)
+9. **Ei-Währung und Paid Random Items:** Laut Roblox zählt ein Ei auch dann als Paid Random Item, wenn es mit einer Währung bezahlt wird, die man (auch indirekt) für Robux kaufen kann. Im Code gibt es schon Coin- und Gem-Pakete als Developer Products. **Bis das Team entscheidet, gilt die sichere Regel:** Eier werden wie Paid Random Items behandelt, also Odds vor dem Kauf anzeigen (Summe 100 %) **und** `MonetizationService.CanBuyPaidRandomItems(player)` prüfen, sonst Alternative anbieten. Zur Entscheidung: (a) Die Ei-Währung ist nie als Paket kaufbar, dann entfällt der Policy-Check, Odds zeigen wir trotzdem; oder (b) wir bleiben bei der sicheren Regel. Empfehlung Claude: (a), weil es einfacher ist und keine Ersatzlösung für gesperrte Länder braucht.
+10. **Serverautoritativ:** Der Client schickt nur Absichten. Alle Regeln aus `CLAUDE.md` (Sicherheit, Daten, Monetarisierung) gelten für jede Rolle.
 
 ## Wochenplan (Ziel: spielbarer Soft Launch in ca. 3 Wochen, Schule geht vor)
 
@@ -80,4 +82,5 @@ Wird es eng: Umfang kürzen (z. B. 2 statt 3 Fähigkeiten, 6 statt 8 Pets), nich
 | 2026-10-20 | Analyse-Vorschläge angenommen, PvP-Format A, Core Loop bestätigt | Team |
 | 2026-10-21 | Design von Anfang an statt Graybox | Team |
 | 2026-10-21 | Dev → Staging → Live als eigene Experiences | Team (Vorschlag Claude, Praxistest offen) |
-| offen | Person ↔ Rolle, Publisher für Live, Payout-Split, Budget | Team |
+| 2026-10-22 | Produkt-IDs pro Stufe; Eier bis zur Entscheidung wie Paid Random Items behandeln (Hinweise von Christophers KI) | Team |
+| offen | Person ↔ Rolle, Publisher für Live, Ei-Währung (a) oder (b), Payout-Split, Budget | Team |

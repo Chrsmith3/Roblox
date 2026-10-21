@@ -44,11 +44,12 @@ Wir bauen zu dritt ein Roblox-Spiel (Zeitalter-Simulator mit PvP-Arena). Damit n
 
 Studio ⟩ **Window ⟩ Version History** ⟩ Version wählen ⟩ **Restore**. Das legt eine **neue** Version an und veröffentlicht **nichts**, danach muss erneut veröffentlicht werden. Roblox empfiehlt, vorher die Zusammenarbeit auszuschalten (Live Collaborators ⟩ ⋯ ⟩ Disable Team Create), damit niemand gleichzeitig editiert. Im Staging also vorher alle informieren.
 
-## Zwei Fallen, die du deinem Menschen erklären sollst
+## Vier Fallen, die du deinem Menschen erklären sollst
 
 1. **Veröffentlichen überschreibt den ganzen Place.** Alles, was nicht im Staging-Stand ist, geht auf Live verloren. Deshalb baut niemand direkt in Live.
 2. **Packages nie auf Auto-Update für Live.** Wiederverwendbare Modelle (z. B. Pets) können als Package in der Roblox-Gruppe liegen. Auf Live das Update **manuell** halten, sonst landet jede Änderung sofort live.
 3. **Animationen/Assets** immer unter der **Roblox-Gruppe** hochladen, der das Spiel gehört, sonst spielen Animationen im Spiel nicht ab.
+4. **Game Passes und Developer Products gehören zu genau einem Experience.** Dev, Staging und Live haben also je eigene Produkt-IDs. `Config/Products.luau` muss die IDs pro Stufe enthalten und anhand von `game.GameId` die richtigen wählen, sonst gehen Käufe nach dem Veröffentlichen auf Live ins Leere.
 
 ## Was noch nicht sicher ist (Woche-0-Praxistest)
 
