@@ -12,7 +12,8 @@
 ## Entscheidungen offen
 - GDD (`docs/GDD.md`) gemeinsam ausfüllen — alle
 - Roblox-Gruppe als Owner + Einnahmen-Split — alle
-- Ei-Währung: (a) nie als Paket kaufbar oder (b) Eier als Paid Random Items mit Policy-Check (`docs/ARBEITSPLAN.md`, Vertrag 9) — alle
+- Wirtschaft v3 (`docs/WIRTSCHAFT.md`) von Christopher reviewen lassen; Zahlen für die Ökonomie-Tabelle (Boss-Belohnungen, Kosten, Pakete, Deckel) — alle
+- Namen der Währungen (Trophäen/Kristalle sind Arbeitsnamen) — alle
 - Rollen den Personen zuordnen (Tabelle in `docs/ARBEITSPLAN.md`) — alle
 - Publisher für Live bestimmen; Woche-0-Praxistest (Publish-as, Restore) zu dritt terminieren — alle
 

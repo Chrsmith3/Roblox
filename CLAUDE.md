@@ -59,7 +59,7 @@ packages/server/       -> ServerStorage.ServerPackages (ProfileStore)
 
 ## Teamarbeit (zuerst lesen)
 Drei Personen arbeiten gleichzeitig mit eigenen KIs. **Vor jeder Arbeit `.team/README.md` lesen und befolgen** (Session-Start, eigene Branches, eigener Team-Ordner, `OFFEN.md`, Session-Ende). Persönliche Einstellungen stehen in `CLAUDE.local.md` (nicht im Git).
-Wer macht was, Rollen, Verträge zwischen den Rollen und Wochenplan: `docs/ARBEITSPLAN.md` (vor jedem neuen Feature lesen). Ablauf Dev → Staging → Live: `docs/KI-BRIEFING-DEV-STAGING-LIVE.md`.
+Wer macht was, Rollen, Verträge zwischen den Rollen und Wochenplan: `docs/ARBEITSPLAN.md` (vor jedem neuen Feature lesen). **Währungen, Belohnungen, Shop, Käufe, Skilltree, Eier, PvP-Boni: `docs/WIRTSCHAFT.md` (verbindlich).** Ablauf Dev → Staging → Live: `docs/KI-BRIEFING-DEV-STAGING-LIVE.md`.
 
 ## Arbeitsweise mit Claude
 - Ein Feature pro Session: erst Plan, dann Code (Server + Client + UI), dann Testanleitung.
