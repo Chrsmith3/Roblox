@@ -39,9 +39,9 @@ Jede Person besitzt einen **Bereich komplett** (Plan → Code → Optik → Test
 - **Besitzt:** `ArenaService`, `ArenaController`, `Config/Abilities.luau`, Animations-/Sound-IDs in `Config/Assets.luau`.
 
 ### Kern & Ökonomie
-- Training/Kraft, Währungen **Trophäen** und **Kristalle** (Regeln: `docs/WIRTSCHAFT.md`), Speichern (ProfileStore), Boss-Belohnungen, Ära-Sprung, Rebirth, Ei mit Odds + Pity, Pets ausrüsten, Kristall-Shop (Waffen, Fähigkeiten, Attribute), Leaderboard, Daily Reward + tägliche Quests, Game Passes und Kristall-Pakete, Analytics-Events.
+- Training/Kraft, Währungen **Trophäen** und **Kristalle** (Regeln: `docs/WIRTSCHAFT.md`), Speichern (ProfileStore), Boss-Belohnungen, Ära-Sprung, Rebirth, Ei mit Odds + Pity, Pets ausrüsten, Kristall-Shop (Waffen, Fähigkeiten, Attribute), Leaderboard (Ära + Rebirths), Daily Reward + tägliche Quests, Codes, Einladen- und Gruppen-Belohnung, Game Passes, Kristall-Pakete, Starter-Pack und Server-Boost, Analytics-Events.
 - Ökonomie-Tabelle (Boss-Belohnungen, Kosten, Raten, Zielzeit 5–7 bzw. 2–3 Tage, Paketgrößen, Rebirth-Kurve, Pet-Werte, Pity-Grenze).
-- **Besitzt:** `DataService`, `CurrencyService`, `MonetizationService`, Trainings-Service (aus `ClickService`), neue `EraService`, `BossService` (Belohnungen), `PetService`, `EggService`, `RebirthService`, `StatsService`, `ShopService` (Kristall-Shop); `Config/Eras|Pets|Eggs.luau`, `DataTemplate.luau`.
+- **Besitzt:** `DataService`, `CurrencyService`, `MonetizationService`, Trainings-Service (aus `ClickService`), neue `EraService`, `BossService` (Belohnungen), `PetService`, `EggService`, `RebirthService`, `StatsService`, `ShopService` (Kristall-Shop), `CodeService`; `Config/Eras|Pets|Eggs.luau`, `DataTemplate.luau`.
 
 ### Producer
 GDD pflegen, Ökonomie-Zahlen mit „Kern" abstimmen, `.team/OFFEN.md` im Blick, zwei kurze Syncs pro Woche (15 min), Playtests organisieren, Roblox-Gruppe, Experiences und Rechte verwalten.
@@ -85,5 +85,6 @@ Wird es eng: Umfang kürzen (z. B. 2 statt 3 Fähigkeiten, 6 statt 8 Pets), nich
 | 2026-10-21 | Dev → Staging → Live als eigene Experiences | Team (Vorschlag Claude, Praxistest offen) |
 | 2026-10-22 | Produkt-IDs pro Stufe (Hinweis von Christophers KI) | Team |
 | 2026-10-22 | **Option (a):** Ei-Währung nie mit Robux kaufbar | Team |
-| 2026-10-22 | Wirtschaft v3: Kraft + Trophäen + Kristalle (kaufbar und erspielbar), Bosse und Arena mit demselben Kampfsystem, Monetarisierung laut `docs/WIRTSCHAFT.md` | Team (Vorschlag Claude, Review Christopher) |
+| 2026-10-22 | Wirtschaft v3: Kraft + Trophäen + Kristalle (kaufbar und erspielbar), Bosse und Arena mit demselben Kampfsystem, Monetarisierung laut `docs/WIRTSCHAFT.md` | Team (Vorschlag Claude) |
+| 2026-10-22 | Wirtschaft v4 nach Review Christopher (Details im GDD-Log) | Team |
 | offen | Person ↔ Rolle, Publisher für Live, Zahlen der Ökonomie-Tabelle, Payout-Split, Budget | Team |

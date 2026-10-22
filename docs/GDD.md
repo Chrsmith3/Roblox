@@ -1,7 +1,7 @@
 # Game Design Document (GDD)
 
 Das ist die "Bibel" des Spiels. Claude baut nach diesem Dokument. Was hier nicht steht, wird nicht gebaut.
-Status: **v0.2 (2026-10-22), Wirtschaft v3**. Enthält nur, was das Team beschlossen hat. **OFFEN** = noch zu entscheiden, nicht bauen, bevor es hier steht. Wer was baut: `docs/ARBEITSPLAN.md`. Wirtschaft, Währungen, Belohnungen, Monetarisierung im Detail: `docs/WIRTSCHAFT.md` (verbindlich).
+Status: **v0.3 (2026-10-22), Wirtschaft v4**. Enthält nur, was das Team beschlossen hat. **OFFEN** = noch zu entscheiden, nicht bauen, bevor es hier steht. Wer was baut: `docs/ARBEITSPLAN.md`. Wirtschaft, Währungen, Belohnungen, Monetarisierung im Detail: `docs/WIRTSCHAFT.md` (verbindlich).
 
 ## 1. Pitch
 - **Arbeitstitel:** OFFEN (Platzhalter im Code: `SimulatorGame`)
@@ -11,7 +11,7 @@ Status: **v0.2 (2026-10-22), Wirtschaft v3**. Enthält nur, was das Team beschlo
 
 ## 2. Core Loop (die 30 Sekunden, die man immer wieder macht)
 1. Spieler **trainiert** (klickt/schlägt an Trainings-Objekten seiner Ära) und baut **Kraft** auf.
-2. Mit genug Kraft besiegt er **Bosse** (3 pro Ära) und bekommt **Trophäen** und **Kristalle**.
+2. Mit genug Kraft besiegt er **Bosse** (3 pro Ära) und bekommt **Trophäen** und **Kristalle**. Kraft bestimmt den Grundschaden, Fähigkeiten geben Extra-Schaden und Effekte; jeder Boss ist auch nur mit Kraft schaffbar.
 3. Er gibt aus: Trophäen für **Eier/Pets** und den **Ära-Sprung**, Kristalle für **Waffen, Fähigkeiten, Attribute (später Skilltree)**.
 4. Er wird stärker → stärkere Bosse, nächste Ära → zurück zu 1.
 
@@ -23,8 +23,9 @@ Zweiter Loop (optional, aber lohnend): **Arena-Runde** (60–90 s) → Trophäen
   - **Trophäen:** nur erspielt (Bosse, Arena), bezahlen Eier, festes Pet im Shop, Ära-Sprung. **Nie mit Robux kaufbar** (Option a, Team-Entscheid 2026-10-22). Kein Umtausch Kristalle → Trophäen.
   - **Kristalle:** erspielt **und** mit Robux kaufbar, bezahlen Waffen, Fähigkeiten, Attribute (später Skilltree), Umskillen. Nur deterministische Käufe, keine Kisten.
 - **Zonen/Welten:** Zeitalter, beginnend mit **Steinzeit (Ära 1)** und **Ära 2** (welche: OFFEN, z. B. Antike). Weitere Ären per Update (open end bis 3000 n. Chr.). Pro Ära 3 Bosse (klein, mittel, Ära-Boss).
-- **Ära-Sprung (Vorschlag, Team bestätigt Details):** Ära-Boss besiegt + X Trophäen. Pets, Trophäen, Kristalle und Skilltree bleiben. X: OFFEN.
-- **Rebirth (Vorschlag):** setzt Kraft und Trainings-Werkzeuge zurück, gibt dauerhaft +X % Kraft. X: OFFEN.
+- **Rebirth (beschlossen, kleiner Kreislauf innerhalb einer Ära):** setzt Kraft und Trainings-Werkzeuge zurück, gibt dauerhaft +X % Kraft. X: OFFEN.
+- **Ära-Sprung (beschlossen, großer Schritt):** Ära-Boss besiegt + X Trophäen; der Ära-Boss verlangt mindestens Y Rebirths (Vorschlag 3). Setzt Kraft zurück, die neue Ära gibt pro Klick ein Vielfaches. Pets, Trophäen, Kristalle, Skilltree und Rebirth-Bonus bleiben. X, Y: OFFEN.
+- **Auto-Training:** gibt nur Kraft, keine Kristalle oder Trophäen. Kein Anti-AFK-Trick.
 - **Upgrades:** Trainings-Werkzeuge schalten sich bei Kraft-Schwellen frei (keine Währung). Waffen/Fähigkeiten/Attribute kosten Kristalle.
 - **Skilltree:** vollständig erst als Ausbau (ein Baum, jede Ära schaltet einen Ast mit 3–5 Knoten frei). v1: Kristalle kaufen Waffen, Fähigkeiten und Attribute als einfache Liste.
 - **Alle Zahlen** (Belohnungen, Kosten, Raten, Zielzeit ohne Kauf 5–7 Tage bis zum vollen Build einer Ära, mit Kauf 2–3 Tage): OFFEN, Ökonomie-Tabelle.
@@ -37,7 +38,7 @@ Zweiter Loop (optional, aber lohnend): **Arena-Runde** (60–90 s) → Trophäen
 - **Ei-Regeln (beschlossen):**
   - Alle möglichen Ergebnisse mit Prozent-Odds **vor** dem Öffnen anzeigen, Summe 100 %.
   - **Pity-Zähler:** nach N Öffnungen ohne seltenes Pet ist eins garantiert; Zähler sichtbar, serverseitig gespeichert. N: OFFEN.
-  - Da Trophäen nie mit Robux kaufbar sind, ist ein Ei **kein** Paid Random Item. Odds zeigen wir trotzdem. Würde je eine ei-bezogene Währung kaufbar, gilt der Policy-Check `MonetizationService.CanBuyPaidRandomItems` (zuerst im Team klären).
+  - **Policy-Check immer aktiv:** Gekaufte Kraft-Boosts beschleunigen indirekt auch Trophäen, deshalb prüft das Ei immer `MonetizationService.CanBuyPaidRandomItems`. Eingeschränkte Spieler kaufen Pets direkt im Shop.
 - **MVP:** 1 Ei mit 6–8 Pets.
 - **Equip-Slots:** OFFEN. Fusion: nicht in v1. Trading: nicht in v1 (Scam-Moderation).
 
@@ -52,17 +53,20 @@ Zweiter Loop (optional, aber lohnend): **Arena-Runde** (60–90 s) → Trophäen
   - PvP ist optional, aber lohnend: etwas höhere Rate für gute Spieler. Genaue Belohnungen: OFFEN.
   - **Kein Pay-to-win:** gekaufte Stärke wirkt in der Arena nur innerhalb des Deckels (`docs/WIRTSCHAFT.md`, Abschnitt 5).
   - v1: Arena **im eigenen Server**. Ranked mit Skill-Matchmaking später, wenn genug Spieler da sind.
-- **Leaderboards:** 1 Leaderboard in v1 (welche Größe: OFFEN).
+- **Leaderboards:** 1 Leaderboard in v1: **höchste Ära + Rebirths**.
+- **Freunde einladen** (Share-Link, Belohnung für beide) und **Gruppen-Beitritt** (einmalige Belohnung) in v1.
+- **Server-Boost** (ein Spieler kauft 2× Kraft für alle im Server) in v1.
 - **Server-weite Events:** später (Phase 2).
 
 ## 6. Retention (damit Spieler wiederkommen)
 - Daily Rewards / Streaks: **Daily Reward in v1** (gibt auch Kristalle).
 - Quests: **3 tägliche Quests in v1** (Kristalle), wöchentliche später.
 - Erfolge (einmalig, z. B. Ära erreicht): Kristalle.
-- Codes: später.
+- **Codes: in v1** (für TikTok/Shorts).
 - Zeitlich begrenzte Events: später (z. B. Währung pro Sekunde/gefarmtem Element während des Events). Kein manipulatives Design (keine FOMO-Timer, keine Casino-Optik).
 - Offline-Earnings: nicht geplant.
 - Daily-/Event-Shop: später.
+- **Update-Rhythmus nach Launch:** etwa wöchentlich etwas Neues (neuer Boss, neues Ei, Event); Plan dafür: OFFEN.
 
 ## 7. Monetarisierung
 Verbindlich und ausführlich: `docs/WIRTSCHAFT.md`. Nur offizielle Wege (Game Passes, Developer Products). Preise nie im Code. Produkt-IDs pro Stufe (Dev/Staging/Live), Arbeitsplan Vertrag 8.
@@ -73,9 +77,11 @@ Verbindlich und ausführlich: `docs/WIRTSCHAFT.md`. Nur offizielle Wege (Game Pa
 | Gamepass | 2× Kraft | verdoppelt Kraft aus Training | OFFEN |
 | Gamepass | Auto-Training | trainiert automatisch | OFFEN |
 | Gamepass | +1 / +2 Pet-Slots | mehr Pets gleichzeitig | OFFEN |
-| Gamepass | 3 Eier auf einmal | spart Zeit, Odds unverändert | OFFEN **[prüfen, Policy]** |
+| Gamepass | 3 Eier auf einmal | spart Zeit, Odds unverändert | OFFEN |
 | Dev Product | **Kristall-Pakete** (Stufen) | Kristalle für Waffen/Fähigkeiten/Attribute | OFFEN |
 | Dev Product | Zeit-Boosts | 2× Kraft / 2× Kristalle für 30 min | OFFEN |
+| Dev Product | Starter-Pack | einmalig, günstiges Kristall-Paket mit Bonus, ohne Countdown | OFFEN |
+| Dev Product | Server-Boost | 2× Kraft für alle im Server (z. B. 15 min), mit Ansage | OFFEN |
 | Kosmetik (Update 1) | Auren, Trails, Emotes | nur Optik, direkt kaufbar, keine Kisten | OFFEN |
 | Abo / Season Pass | — | später | — |
 
@@ -87,8 +93,8 @@ Verbindlich und ausführlich: `docs/WIRTSCHAFT.md`. Nur offizielle Wege (Game Pa
 - **Sounds/Musik:** OFFEN. Nur eigene oder lizenzfreie, keine fremden Marken/Musik.
 
 ## 9. Launch-Umfang (Version 1)
-- **Was MUSS rein:** Steinzeit komplett + Ära 2 als Ziel, Training/Kraft, Bosse (3 pro Ära), Trophäen + Kristalle, Speichern, 1 Ei (6–8 Pets, Odds, Pity) + festes Pet im Shop, Pets ausrüsten, Kristall-Shop (Waffen, Fähigkeiten, Attribute), Rebirth, Ära-Sprung, ein Kampfsystem für Bosse und Arena, Arena im eigenen Server (2–3 Fähigkeiten, PvP-Deckel), 1 Leaderboard, Daily Reward + 3 tägliche Quests, 2–3 Game Passes + Kristall-Pakete, Analytics-Events (Boss-Sieg, Ära-Sprung, Rebirth, Arena-Teilnahme, Käufe).
-- **Was kommt später (Updates):** Ära 3+, vollständiger Skilltree, Ranked-Matchmaking + Saisons, Season Pass, Kosmetik, Daily-/Event-Shop, Events, wöchentliche Quests, Codes. Trading, Kisten und Robux-Eier vorerst gar nicht.
+- **Was MUSS rein:** Steinzeit komplett + Ära 2 als Ziel, Training/Kraft, Bosse (3 pro Ära), Trophäen + Kristalle, Speichern, 1 Ei (6–8 Pets, Odds, Pity, Policy-Check) + festes Pet im Shop, Pets ausrüsten, Kristall-Shop (Waffen, Fähigkeiten, Attribute), Rebirth, Ära-Sprung, ein Kampfsystem für Bosse und Arena, Arena im eigenen Server (2–3 Fähigkeiten, PvP-Deckel), 1 Leaderboard (Ära + Rebirths), Daily Reward + 3 tägliche Quests, Codes, Einladen- und Gruppen-Belohnung, 2–3 Game Passes + Kristall-Pakete + Starter-Pack + Server-Boost, Analytics-Events (Boss-Sieg, Ära-Sprung, Rebirth, Arena-Teilnahme, Käufe).
+- **Was kommt später (Updates):** Ära 3+, vollständiger Skilltree, Ranked-Matchmaking + Saisons, Season Pass, Kosmetik, Daily-/Event-Shop, Events, wöchentliche Quests. Trading, Kisten und Robux-Eier vorerst gar nicht.
 - **Erfolgsmessung:** D1, D7, Ø Session, Anteil mit Boss-Sieg, Anteil mit Arena-Runde, Anteil mit Ära-Sprung, Kaufrate, Zeit bis zum vollen Build ohne Kauf. Richtwert D1 ab ca. 20–25 %.
 
 ## 10. Entscheidungen (Log)
@@ -99,4 +105,5 @@ Verbindlich und ausführlich: `docs/WIRTSCHAFT.md`. Nur offizielle Wege (Game Pa
 | 2026-10-21 | Design von Anfang an statt graues Graybox | Team |
 | 2026-10-22 | Produkt-IDs pro Stufe | Team (Hinweis Christophers KI) |
 | 2026-10-22 | **Option (a):** Ei-Währung (Trophäen) nie mit Robux kaufbar | Team |
-| 2026-10-22 | Wirtschaft v3: Kraft, Trophäen (nur erspielt), Kristalle (erspielt + kaufbar); Bosse und Arena mit demselben Kampfsystem; PvP-Deckel; Details `docs/WIRTSCHAFT.md` | Team (Vorschlag Claude, Review Christopher offen) |
+| 2026-10-22 | Wirtschaft v3: Kraft, Trophäen (nur erspielt), Kristalle (erspielt + kaufbar); Bosse und Arena mit demselben Kampfsystem; PvP-Deckel; Details `docs/WIRTSCHAFT.md` | Team (Vorschlag Claude) |
+| 2026-10-22 | Wirtschaft v4 (Review Christopher): Bosskampf-Mischung, Rebirth + Ära-Sprung mit Mindest-Rebirths, Auto-Training nur Kraft, Policy-Check beim Ei immer, Codes/Einladen/Gruppe/Starter-Pack/Server-Boost in v1, Leaderboard Ära + Rebirths | Team |

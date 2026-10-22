@@ -5,6 +5,7 @@
 
 ## Übergaben
 <!-- Format: - von <kürzel> an <kürzel>: <was> -->
+- von chris an julius: PR `chris/wirtschaft-v4` reviewen (Wirtschaft v4 nach meinem Review, baut auf `julius/dev-staging-live-briefing` auf)
 - von julius an chris: PR „Team-Workflow" reviewen; Branch-Schutz für main aktivieren (Settings ⟩ Branches ⟩ Add rule: main, „Require a pull request before merging", 1 Approval)
 - von julius an gregor: PR reviewen; CLAUDE.local.md aus .team/_claude-local-vorlage.md anlegen
 - von julius an chris und gregor: eure KI `docs/KI-BRIEFING-DEV-STAGING-LIVE.md` lesen und euch den Ablauf erklären lassen; eigenes Dev-Experience anlegen
@@ -12,7 +13,8 @@
 ## Entscheidungen offen
 - GDD (`docs/GDD.md`) gemeinsam ausfüllen — alle
 - Roblox-Gruppe als Owner + Einnahmen-Split — alle
-- Wirtschaft v3 (`docs/WIRTSCHAFT.md`) von Christopher reviewen lassen; Zahlen für die Ökonomie-Tabelle (Boss-Belohnungen, Kosten, Pakete, Deckel) — alle
+- Zahlen für die Ökonomie-Tabelle (Boss-Belohnungen, Kosten, Pakete, Deckel, Rebirth/Ära-Sprung, Codes/Einladen/Starter-Pack) — alle
+- Update-Plan nach dem Launch (wöchentlich: Boss/Ei/Event) — alle
 - Namen der Währungen (Trophäen/Kristalle sind Arbeitsnamen) — alle
 - Rollen den Personen zuordnen (Tabelle in `docs/ARBEITSPLAN.md`) — alle
 - Publisher für Live bestimmen; Woche-0-Praxistest (Publish-as, Restore) zu dritt terminieren — alle
