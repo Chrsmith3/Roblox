@@ -52,6 +52,7 @@ packages/server/       -> ServerStorage.ServerPackages (ProfileStore)
 - R15-Avatare verwenden.
 
 ## UI & Game Feel
+- Stil, HUD-Layout, erste 2 Minuten, Handy-Performance: **`docs/DESIGN.md` (verbindlich)**.
 - Mobile-first: Buttons min. `UIStyle.Sizes.MinTouchTarget`, nichts in Ecken, die vom Daumen verdeckt sind.
 - Nur Komponenten aus `client/UI/Components` verwenden, nur Werte aus `UIStyle`.
 - **Jede Aktion braucht Feedback** über `FeedbackController`: Sound + Animation (Pop/Tween) + ggf. FloatingText, CameraShake, Haptic.

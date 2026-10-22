@@ -30,7 +30,7 @@ Jede Person besitzt einen **Bereich komplett** (Plan → Code → Optik → Test
 ### Look
 - **Claude Design (2D):** Style Guide (Farben, Schrift, Formen, Low-Poly-Regeln, Buttons), Moodboards je Ära, UI-Mockups (HUD, Ei mit Odds, Rebirth, Ära-Sprung, Arena-Lobby, Shop), Icons, Pet-Konzepte, später Game-Icon und Thumbnails. Weg zur UI im Spiel: Mockup → Claude-Code-Handoff → Luau-UI mit `UIStyle` und den Komponenten aus `client/UI/Components`.
 - **Roblox Studio (3D):** Steinzeit-Map, Ära-2-Map, Trainings-Objekte, Boss-Arenen und Boss-Modelle (3 pro Ära), 6–8 Pets, Arena-Look. Studio-KI-Generierung über das Studio-MCP (Mesh, Material, Textur), Toolbox nur geprüft (Backdoor-Gefahr). Ab Ära 2 immer eine Ära vorausarbeiten.
-- **Besitzt:** `Config/UIStyle.luau`, den Style Guide (`docs/style/`), Karten/Modelle.
+- **Besitzt:** `Config/UIStyle.luau`, den Style Guide (`docs/style/`), Karten/Modelle. Regeln für Stil, HUD, Onboarding und Handy-Performance: `docs/DESIGN.md`.
 
 ### Arena & Feel
 - **Ein Kampfsystem für Bosse und Arena** (gleiche Fähigkeiten und Steuerung), Boss-Kampf (3 pro Ära) und Rundenablauf der Arena (Beitreten, Countdown, 60–90 s Kampf, Ergebnis), 3 Fähigkeiten mit Abklingzeit, Treffer **serverseitig** geprüft, Belohnung für Teilnahme und Platzierung statt nur für Siege, PvP-Boni aus `StatsService.GetPvPModifiers` mit Deckel.
